@@ -30,7 +30,7 @@ app.post('/api/sticker', async(req, res) => {
       background: req.body.data.background? req.body.data.background : "#000000"// The sticker background color (only for full stickers)
     })
 
-    res.send(await sticker.toMessage());
+    res.send(await sticker.toBuffer());
     fs.unlinkSync('./tmp/' + name + '.png')
   } catch(e) {
     res.send(e)
