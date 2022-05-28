@@ -48,7 +48,7 @@ app.post('/api/sticker', async(req, res) => {
 
     if(req.body.data.sendImage) {
        await sticker.toFile("./tmp/s.webp")
-       await res.sendFile(__dirname + '/tmp/s.webp")
+       await res.sendFile(__dirname + "/tmp/s.webp")
        fs.unlinkSync('./tmp/s.webp')
     } else {
        let resp;
