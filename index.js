@@ -29,8 +29,10 @@ app.post('/api/sticker', async(req, res) => {
       quality: 50, // The quality of the output file
       background: req.body.data.background? req.body.data.background : "#000000"// The sticker background color (only for full stickers)
     })
-
-    res.send(await sticker.toBuffer());
+    
+    let resp;
+    req.body.data.bufferRes? resp = await sticker.toBuffer() : resp = await sticker.toMessage()
+    res.send(resp);
     fs.unlinkSync('./tmp/' + name + '.png')
   } catch(e) {
     res.send(e)
