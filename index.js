@@ -49,7 +49,7 @@ app.post('/api/sticker', async(req, res) => {
     if(req.body.data.sendImage) {
        await sticker.toFile("s.webp")
        res.sendFile("s.webp")
-       //fs.unlinkSync('s.webp')
+       fs.unlinkSync('s.webp')
     } else {
        let resp;
        req.body.data.bufferRes? resp = await sticker.toBuffer() : resp = await sticker.toMessage()
