@@ -46,10 +46,16 @@ app.post('/api/sticker', async(req, res) => {
       background: req.body.data.background? req.body.data.background : "#000000"// The sticker background color (only for full stickers)
     })
 
-    let resp;
-    req.body.data.bufferRes? resp = await sticker.toBuffer() : resp = await sticker.toMessage()
-    res.send(resp);
-    fs.unlinkSync('./tmp/' + name + '.png')
+    if(req.body.data.sendImage) {
+       await sticker.toFile("./tmp/s.webp")
+       await res.sendFile(__dirname + '/tmp/s.webp")
+       fs.unlinkSync('./tmp/s.webp')
+    } else {
+       let resp;
+       req.body.data.bufferRes? resp = await sticker.toBuffer() : resp = await sticker.toMessage()
+       res.send(resp);
+       fs.unlinkSync('./tmp/' + name + '.png')
+    }
   } catch(e) {
     res.send(e)
     if(fs.existsSync('./tmp/' + name + '.png')) {
