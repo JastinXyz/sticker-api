@@ -5,7 +5,8 @@ const cors = require('cors')
 const _s = require('scramb')
 const { Sticker, createSticker, StickerTypes } = require('wa-sticker-formatter')
 const fs = require('fs')
-const PORT = 3000
+require('dotenv').config()
+const PORT = process.env.PORT
 
 // parse application/json
 app.use(bodyParser.json())
@@ -40,5 +41,5 @@ app.post('/api/sticker', async(req, res) => {
 })
 
 app.listen(PORT, () => {
-  console.log("read on port " + PORT);
+  console.log("ready on port " + PORT);
 })
