@@ -42,7 +42,7 @@ app.post('/api/sticker', async(req, res) => {
       categories: req.body.data.emoji, // The sticker category
       id: req.body.data.id, // The sticker id
       quality: 50, // The quality of the output file
-      background: req.body.data.background? req.body.data.background : "#000000"// The sticker background color (only for full stickers)
+      //background: req.body.data.background? req.body.data.background : "#000000"// The sticker background color (only for full stickers)
     })
 
     if(req.body.data.sendImage) {
