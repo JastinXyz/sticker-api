@@ -38,7 +38,7 @@ app.post('/api/sticker', async(req, res) => {
     const sticker = new Sticker(`./tmp/${name}.png`, {
       pack: req.body.data.packname, // The pack name
       author: req.body.data.author, // The author name
-      type: StickerTypes.DEFAULT, // The sticker type
+      type: StickerTypes.FULL, // The sticker type
       categories: req.body.data.emoji, // The sticker category
       id: req.body.data.id, // The sticker id
       quality: 50, // The quality of the output file
